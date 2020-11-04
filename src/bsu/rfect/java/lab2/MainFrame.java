@@ -24,6 +24,9 @@ public class MainFrame extends JFrame {
     int equation_numb = 1;
     private  JLabel image;
 
+    private static final int WIDTH = 600;
+    private static final int HEIGHT = 400;
+
     private Double mem1 = new Double(0);
     private Double mem2 = new Double(0);
     private Double mem3 = new Double(0);
@@ -93,6 +96,28 @@ public class MainFrame extends JFrame {
         hboxEquationType.add(button);
     }
 
+    public MainFrame(){
+        super("Вычисление уравнения");
+        setSize(WIDTH, HEIGHT);
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        setLocation((kit.getScreenSize().width - WIDTH) / 2, (kit.getScreenSize().height - HEIGHT) / 2);
+
+        hboxEquationType.add(Box.createHorizontalGlue());
+        addRadioButton("Уравнение 1", 1);
+        addRadioButton("Уравнение 2", 2);
+        radioButtons.setSelected(radioButtons.getElements().nextElement().getModel(), true);
+        hboxEquationType.add(Box.createHorizontalGlue());
+        hboxEquationType.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
+        Box hBoxEquationImage = Box.createHorizontalBox();
+        hBoxEquationImage.add(Box.createHorizontalGlue());
+        image = new JLabel(new ImageIcon(MainFrame.class.getResource("equation_1bmp")));
+        hBoxEquationImage.add(image);
+        hBoxEquationImage.add(Box.createHorizontalGlue());
+
+
+
+    }
 
     public static void main(String[] args) {
 
