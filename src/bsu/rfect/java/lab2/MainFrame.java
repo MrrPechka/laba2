@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.*;
+import java.awt.image.ImageObserver;
 import static java.lang.Math.*;
 
 @SuppressWarnings("serial")
@@ -13,8 +14,15 @@ import static java.lang.Math.*;
 public class MainFrame extends JFrame {
     private int memoryId = 1;
     private JTextField memoryTextField;
+
     private ButtonGroup radioMemoryButtons = new ButtonGroup();
+    private ButtonGroup radioButtons = new ButtonGroup();
+
     private Box hBoxMemoryType = Box.createHorizontalBox();
+    private Box hboxEquationType = Box.createHorizontalBox();
+
+    int equation_numb = 1;
+    private  JLabel image;
 
     private Double mem1 = new Double(0);
     private Double mem2 = new Double(0);
@@ -68,6 +76,24 @@ public class MainFrame extends JFrame {
         radioMemoryButtons.add(button);
         hBoxMemoryType.add(button);
     }
+
+    private void addRadioButton(String name, final int equation_numb){
+        JRadioButton button = new JRadioButton(name);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainFrame.this.equation_numb = equation_numb;
+                if(equation_numb == 1)
+                    image.setIcon(new ImageIcon(MainFrame.class.getResource("equation_1.png")));
+                if(equation_numb == 2)
+                    image.setIcon(new ImageIcon(MainFrame.class.getResource("equation_2.png")));
+            }
+        });
+        radioButtons.add(button);
+        hboxEquationType.add(button);
+    }
+
+
     public static void main(String[] args) {
 
     }
