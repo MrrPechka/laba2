@@ -13,7 +13,9 @@ import static java.lang.Math.*;
 
 public class MainFrame extends JFrame {
     private int memoryId = 1;
+
     private JTextField memoryTextField;
+    private JTextField resultFieldText;
 
     private ButtonGroup radioMemoryButtons = new ButtonGroup();
     private ButtonGroup radioButtons = new ButtonGroup();
@@ -26,6 +28,10 @@ public class MainFrame extends JFrame {
 
     private static final int WIDTH = 600;
     private static final int HEIGHT = 400;
+
+    private JTextField text_Field_X;
+    private JTextField text_Field_Y;
+    private JTextField text_Field_Z;
 
     private Double mem1 = new Double(0);
     private Double mem2 = new Double(0);
@@ -115,7 +121,41 @@ public class MainFrame extends JFrame {
         hBoxEquationImage.add(image);
         hBoxEquationImage.add(Box.createHorizontalGlue());
 
+        JLabel label_for_X = new JLabel("x:");
+        text_Field_X = new JTextField("0.0", 10);
+        text_Field_X.setMaximumSize(text_Field_X.getPreferredSize());
 
+        JLabel label_for_Y = new JLabel("y:");
+        text_Field_Y = new JTextField("0.0", 10);
+        text_Field_Y.setMaximumSize(text_Field_Y.getPreferredSize());
+
+        JLabel label_for_Z = new JLabel("z:");
+        text_Field_Z = new JTextField("0.0", 10);
+        text_Field_Z.setMaximumSize(text_Field_Z.getPreferredSize());
+
+        Box hBoxVariables = Box.createHorizontalBox();
+        hBoxVariables.add(Box.createHorizontalGlue());
+
+        hBoxVariables.add(Box.createHorizontalStrut(50));
+        hBoxVariables.add(label_for_X);
+        hBoxVariables.add(Box.createHorizontalStrut(10));
+        hBoxVariables.add(text_Field_X);
+
+        hBoxVariables.add(Box.createHorizontalStrut(50));
+        hBoxVariables.add(label_for_Y);
+        hBoxVariables.add(Box.createHorizontalStrut(10));
+        hBoxVariables.add(text_Field_Y);
+
+        hBoxVariables.add(Box.createHorizontalStrut(50));
+        hBoxVariables.add(label_for_Z);
+        hBoxVariables.add(Box.createHorizontalStrut(10));
+        hBoxVariables.add(text_Field_Z);
+
+        hBoxVariables.add(Box.createHorizontalGlue());
+
+        JLabel label_for_result = new JLabel("Результат:");
+        resultFieldText = new JTextField("0", 15);
+        resultFieldText.setMaximumSize(resultFieldText.getPreferredSize());
 
     }
 
