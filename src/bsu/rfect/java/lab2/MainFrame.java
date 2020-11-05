@@ -157,6 +157,35 @@ public class MainFrame extends JFrame {
         resultFieldText = new JTextField("0", 15);
         resultFieldText.setMaximumSize(resultFieldText.getPreferredSize());
 
+        Box hBoxResult = Box.createHorizontalBox();
+        hBoxResult.add(Box.createHorizontalGlue());
+        hBoxResult.add(label_for_result);
+        hBoxResult.add(Box.createHorizontalStrut(10));
+        hBoxResult.add(resultFieldText);
+        hBoxResult.add(Box.createHorizontalGlue());
+        hBoxResult.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
+        JButton button_calc = new JButton("Вычислить");
+        button_calc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    Double x = Double.parseDouble(text_Field_X.getText());
+                    Double y = Double.parseDouble(text_Field_Y.getText());
+                    Double z = Double.parseDouble(text_Field_Z.getText());
+                    Double result;
+                    if(equation_numb == 1)
+                        result = equation_1(x, y, z);
+                    else
+                        result = equation_2(x, y, z);
+
+                    resultFieldText.setText(result.toString());
+                } catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(MainFrame.this, "Ошибка в формате записи вещественного числа", "Ошибочный формат числа", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
     }
 
     public static void main(String[] args) {
