@@ -186,6 +186,69 @@ public class MainFrame extends JFrame {
             }
         });
 
+        hBoxMemoryType.add(Box.createHorizontalGlue());
+        addMemoryRadioButton("Память 1", 1);
+        addMemoryRadioButton("Память 2", 2);
+        addMemoryRadioButton("Память 3", 3);
+        radioMemoryButtons.setSelected(radioMemoryButtons.getElements().nextElement().getModel(),true);
+        hBoxMemoryType.add(Box.createHorizontalGlue());
+        hBoxMemoryType.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        JButton button_reset = new JButton("Очистить поля");
+        button_reset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                text_Field_X.setText("0.0");
+                text_Field_Y.setText("0.0");
+                text_Field_Z.setText("0.0");
+                resultFieldText.setText("0.0");
+                JOptionPane.showMessageDialog(MainFrame.this, "Поля очищены", "Очистка", JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+        JButton button_MC = new JButton("MC");
+        button_MC.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(memoryId == 1)
+                    mem1 = 0.0;
+                if(memoryId == 2)
+                    mem2 = 0.0;
+                if(memoryId == 3)
+                    mem3 = 0.0;
+                memoryTextField.setText("0.0");
+            }
+        });
+        memoryTextField = new JTextField("0.0", 15);
+        memoryTextField.setMaximumSize(memoryTextField.getPreferredSize());
+        Box hBoxMemoryField = Box.createHorizontalBox();
+        hBoxMemoryField.add(Box.createHorizontalGlue());
+        hBoxMemoryField.add(memoryTextField);
+        hBoxMemoryField.add(Box.createHorizontalGlue());
+
+        JButton button_Mplus = new JButton("M+");
+        button_Mplus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    Double result = Double.parseDouble(resultFieldText.getText());
+                    if(memoryId == 1) {
+                        mem1 += result;
+                        memoryTextField.setText(mem1.toString());
+                    }
+                    if(memoryId == 2) {
+                        mem2 = result;
+                        memoryTextField.setText(mem2.toString());
+                    }
+                    if(memoryId == 3){
+                        mem3 = result;
+                        memoryTextField.setText(mem3.toString());
+                    }
+                } catch(NumberFormatException){
+                     JOptionPane.showMessageDialog(MainFrame.this, "Ошибка в формате записи вещественного числа", "Ошибочный формат числа", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
     }
 
     public static void main(String[] args) {
