@@ -243,12 +243,38 @@ public class MainFrame extends JFrame {
                         mem3 = result;
                         memoryTextField.setText(mem3.toString());
                     }
-                } catch(NumberFormatException){
+                } catch(NumberFormatException ex){
                      JOptionPane.showMessageDialog(MainFrame.this, "Ошибка в формате записи вещественного числа", "Ошибочный формат числа", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
+        Box hBoxControlButtons = Box.createHorizontalBox();
+        hBoxControlButtons.add(Box.createHorizontalGlue());
+        hBoxControlButtons.add(button_MC);
+        hBoxControlButtons.add(Box.createHorizontalGlue());
+        hBoxControlButtons.add(button_Mplus);
+        hBoxControlButtons.add(Box.createHorizontalGlue());
 
+        Box hBoxButtons = Box.createHorizontalBox();
+        hBoxButtons.add(Box.createHorizontalGlue());
+        hBoxButtons.add(button_calc);
+        hBoxButtons.add(Box.createHorizontalStrut(30));
+        hBoxButtons.add(button_reset);
+        hBoxButtons.add(Box.createHorizontalGlue());
+        hBoxButtons.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+
+        Box contentBox = Box.createVerticalBox();
+        contentBox.add(Box.createVerticalGlue());
+        contentBox.add(hboxEquationType);
+        contentBox.add(hBoxEquationImage);
+        contentBox.add(hBoxVariables);
+        contentBox.add(hBoxResult);
+        contentBox.add(hBoxButtons);
+        contentBox.add(hBoxMemoryType);
+        contentBox.add(hBoxControlButtons);
+        contentBox.add(hBoxMemoryField);
+        contentBox.add(Box.createVerticalBox());
+        getContentPane().add(contentBox, BorderLayout.CENTER);
     }
 
     public static void main(String[] args) {
