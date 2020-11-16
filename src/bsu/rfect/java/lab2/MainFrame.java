@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import static java.lang.Math.*;
 
 public class MainFrame extends JFrame {
@@ -272,6 +271,7 @@ public class MainFrame extends JFrame {
                 }
             }
         });
+
         JButton MC = new JButton("MC");
         MC.addActionListener(new ActionListener() {
             @Override
